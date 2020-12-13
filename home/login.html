@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 引入layui的样式 -->
+    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css" />
+
+    <!-- 自己的样式 -->
+    <link rel="stylesheet" href="/assets/css/login.css" />
+  </head>
+  <body>
+    <!-- 大事件的logo -->
+    <div class="layui-main logo">
+      <img src="/assets/images/logo.png" alt="" />
+    </div>
+
+    <!-- 登录和注册 -->
+    <div class="box">
+      <div class="title"></div>
+
+      <div class="loginAndRegistr">
+        <!-- 登录form -->
+        <div class="login">
+          <!--【？？】 这个form的action  不去掉会有影响吗？ -->
+          <form class="layui-form" action="" id="loginForm">
+            <!--位置放错 <i class="layui-icon">&#xe60c;</i> -->
+            <div class="layui-form-item">
+              <!-- 【位置放这里】 -->
+              <i class="layui-icon layui-icon-username"></i>
+
+              <!-- 因为 .layui-input-block这个类有左边距，所以删掉 -->
+              <!-- <div class="layui-input-block"> -->
+              <!-- lay-verify="required" 因为有lay-verify这个东西，写在这边了，
+                然后引入layui的js文件 layui.all.js
+                 ====>可以看到效果:input输入框中不写内容,点击登录按钮
+              提示框笑脸的那个 -->
+
+              <!-- 【【！！特别注意：  这边的input text的  lay-verify=" " 中不用加 pass====》不然 点击登录的按钮的时候  即使是密码那一块对了   用户名的格式也得是密码的按格式】】 -->
+              <!-- 错误原因在： 这个代码 lay-verify="required|pass"里边多加了个pass -->
+              <input
+                type="text"
+                name="username"
+                required
+                lay-verify="required"
+                placeholder="请输入用户名"
+                autocomplete="off"
+                class="layui-input"
+              />
+              <!-- </div> -->
+            </div>
+
+            <div class="layui-form-item">
+              <!-- 未加：是个笑脸的icon。   加了： 人 + 笑脸icon    原因 i便签里边还有一个  &#xe60c;  这个代表的就是笑脸   去掉即可 -->
+              <!-- <i class="layui-icon layui-icon-password">&#xe60c;</i> -->
+              <i class="layui-icon layui-icon-password"></i>
+              <input
+                type="password"
+                name="password"
+                required
+                lay-verify="required|pass"
+                placeholder="请输入密码"
+                autocomplete="off"
+                class="layui-input"
+              />
+              <!-- </div> -->
+            </div>
+
+            <div class="layui-form-item">
+              <!-- <div class="layui-input-block"> -->
+              <button
+                class="layui-btn layui-btn-normal layui-btn-fluid"
+                lay-submit
+                lay-filter="formDemo"
+              >
+                登录
+              </button>
+              <!-- </div> -->
+            </div>
+            <!-- 把a链接剪切进来 -->
+            <a href="javascript:;" id="goToRegi">去注册账号</a>
+          </form>
+        </div>
+
+        <!-- 注册form -->
+        <div class="register">
+          <form class="layui-form" action="" id="regiForm">
+            <!--位置放错 <i class="layui-icon">&#xe60c;</i> -->
+            <div class="layui-form-item">
+              <!-- 【位置放这里】 -->
+              <i class="layui-icon layui-icon-username"></i>
+
+              <!-- 因为 .layui-input-block这个类有左边距，所以删掉 -->
+              <!-- <div class="layui-input-block"> -->
+              <!-- lay-verify="required" 因为有lay-verify这个东西，写在这边了，
+                    然后引入layui的js文件 layui.all.js
+                     ====>可以看到效果:input输入框中不写内容,点击登录按钮
+                  提示框笑脸的那个 -->
+              <input
+                type="text"
+                name="username"
+                required
+                lay-verify="required"
+                placeholder="请输入用户名"
+                autocomplete="off"
+                class="layui-input"
+              />
+              <!-- </div> -->
+            </div>
+
+            <div class="layui-form-item">
+              <!-- 未加：是个笑脸的icon。   加了： 人 + 笑脸icon    原因 i便签里边还有一个  &#xe60c;  这个代表的就是笑脸   去掉即可 -->
+              <!-- <i class="layui-icon layui-icon-password">&#xe60c;</i> -->
+              <i class="layui-icon layui-icon-password"></i>
+              <input
+                type="password"
+                name="password"
+                required
+                lay-verify="required|pass"
+                placeholder="请输入密码"
+                autocomplete="off"
+                class="layui-input passIpt"
+              />
+              <!-- </div> -->
+            </div>
+
+            <div class="layui-form-item">
+              <!-- 未加：是个笑脸的icon。   加了： 人 + 笑脸icon    原因 i便签里边还有一个  &#xe60c;  这个代表的就是笑脸   去掉即可 -->
+              <!-- <i class="layui-icon layui-icon-password">&#xe60c;</i> -->
+              <i class="layui-icon layui-icon-password"></i>
+              <input
+                type="password"
+                name="title"
+                required
+                lay-verify="required|pass|repass"
+                placeholder="请再次输入密码"
+                autocomplete="off"
+                class="layui-input"
+              />
+              <!-- </div> -->
+            </div>
+
+            <!-- 登录按钮 -->
+            <div class="layui-form-item">
+              <!-- <div class="layui-input-block"> -->
+              <button
+                class="layui-btn layui-btn-normal layui-btn-fluid"
+                lay-submit
+                lay-filter="formDemo"
+              >
+                注册
+              </button>
+              <!-- </div> -->
+            </div>
+            <!-- 把a链接剪切进来 -->
+            <a href="javascript:;" id="goToLogin">去登录</a>
+          </form>
+          <!-- <a href="javascript:;" id="goToLogin">去登录</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 引入layui的js文件【标记-1】 -->
+    <script src="/assets/lib/layui/layui.all.js"></script>
+
+    <!-- 引入jq的js -->
+    <script src="/assets/lib/jquery.js"></script>
+
+    <!-- 自己的js -->
+    <script src="/assets/js/login.js"></script>
+  </body>
+</html>

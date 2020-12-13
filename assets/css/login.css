@@ -1,0 +1,62 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background: url("/assets/images/login_bg.jpg") no-repeat center/cover;
+}
+
+.logo {
+  margin-top: 20px;
+}
+
+.box {
+  width: 400px;
+  height: 310px;
+  /* position: relative;  【错误2】*/
+  position: absolute;
+  background-color: #fff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  background: url("/assets/images/login_title.png") no-repeat center;
+  /* 注意   给父盒子写宽高 */
+  /* height: 310px; 【no 1 】*/
+  /* position: absolute;  【错误2】*/
+
+  /* title是要写高的 */
+  height: 60px;
+}
+
+.register {
+  display: none;
+}
+
+.layui-form {
+  padding: 0 30px;
+}
+
+#goToRegi,
+#goToLogin {
+  float: right;
+}
+
+/* 父相子绝 */
+.layui-form-item {
+  position: relative;
+}
+/* 父相子绝 */
+.layui-icon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.layui-input {
+  text-indent: 1.5em;
+}
