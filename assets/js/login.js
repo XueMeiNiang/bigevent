@@ -86,12 +86,13 @@ $(function(){
         
         
         $.ajax({
-            url:"http://ajax.frontend.itheima.net/api/reguser",
+            // url:"http://ajax.frontend.itheima.net/api/reguser",
+            // [02------》 根路径的优化  ajaxConfig.js   和  在login.html 引入]
+            url:"/api/reguser",
             type:"POST",
             data,
 
-    //------------ []【】 ======    -----------------
-
+//------------ []【】 ======    -----------------
             // data:$("form").serialize(),  【错误的地方  $("form")】
 
             //【！！！！】【【终于知道为什么会在我点击  注册的时候 ，服务器给我返回的是这么奇怪的一个东西
@@ -143,7 +144,11 @@ $(function(){
         let data = $(this).serialize();
 
         $.ajax({
-            url:"http://ajax.frontend.itheima.net/api/login",
+            // [02------》 根路径的优化  ajaxConfig.js   和  在login.html 引入]
+            // url:"http://ajax.frontend.itheima.net/api/login",
+            url:"/api/login",
+            // [02------》]   上传到github
+
             type: "POST",
             data,
             success:function(res){
@@ -153,6 +158,11 @@ $(function(){
                     //return alert("登录失败")
                     return layer.msg(res.message);
                 }
+
+                //[------》day02]  把 token（令牌）存储到本地存储中
+                // localStorage.setItem("token",res.token);
+                // console.log(res.token);
+                localStorage.setItem("token",res.token);
 
                 //登录成功 优化
                 // layer.msg(res.message);
@@ -166,15 +176,7 @@ $(function(){
                         // 跳转页面  +　新建个index.html
                         location.href = "/home/index.html"
                   });   
-
-
-
-
-
-                //登录成功
-                // layer.msg(res.message);
-                // // 跳转页面  +　新建个index.html
-                // location.href = "/home/index.html"
+ 
             }
 
         })
