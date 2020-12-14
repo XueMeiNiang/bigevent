@@ -161,7 +161,7 @@ $(function(){
 
                 //[------》day02]  把 token（令牌）存储到本地存储中
                 // localStorage.setItem("token",res.token);
-                // console.log(res.token);
+                console.log(res.token);
                 localStorage.setItem("token",res.token);
 
                 //登录成功 优化
