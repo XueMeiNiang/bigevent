@@ -11,12 +11,15 @@ function getUserInfo(){
         //注意：以下写法的前提是在页面中引入ajaxConfig.js文件
         url:"/my/userinfo",
         post:"GET",
-        // 请求头的配置【！！！】
-        headers:{
-            // token的值存储在本地存储中，需要从本地存储中来获取
-            // Authorization 这个不是随便写的，后端定义要求的
-            "Authorization": localStorage.getItem("token"),
-        },
+
+        // 03----》 优化请求头  【写在 ajaxConfig.js  文件里边了】 【这边的可以注释掉了  】
+        // // 请求头的配置【！！！】
+        // headers:{
+        //     // token的值存储在本地存储中，需要从本地存储中来获取
+        //     // Authorization 这个不是随便写的，后端定义要求的
+        //     "Authorization": localStorage.getItem("token"),
+        // },
+
         success: function(res){
             console.log(res);
             // 判断失败  【自己的胡话语：这边的失败和error失败的回调函数是不一样的。
@@ -66,9 +69,44 @@ function getUserInfo(){
 
             }
 
+        },
+
+        // 03----》
+        complete : function(res){
+            // 请求完成（不论是成功还是 失败）  都会执行的回调函数
+            console.log(res);
+            if(res.responseJSON.message === "获取用户基本信息成功！" &&  status === 0){
+                //表示用户没有权限进入到index页面  需要回到login页面重新登录
+
+                // 跳转到登录的页面
+                location.href = "/home/login.html";
+
+                     // 清除token
+                     localStorage.removeItem("token");
+            }
         }
       
     
     })
     
 }
+
+// ----》03
+// 退出功能
+$("#logoutBtn").click(function(){
+    // 弹出询问框
+    // layer是layui提供的
+    layer.confirm('is not?', {icon: 3, title:'提示'}, function(index){
+         //点击确认执行的回调函数
+        
+        // 清除token
+        localStorage.removeItem("token");
+        // 跳转页面
+        location.href = "/home/login.html";
+
+        layer.close(index); //关闭当前的询问框
+      });
+
+    
+
+})
