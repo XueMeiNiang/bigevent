@@ -25,3 +25,7 @@
   line-height: 40px;
   display: none;
 }
+
+iframe {
+  background-color: rgba(242, 243, 245);
+}

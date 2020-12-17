@@ -96,7 +96,7 @@ function getUserInfo(){
 $("#logoutBtn").click(function(){
     // 弹出询问框
     // layer是layui提供的
-    layer.confirm('is not?', {icon: 3, title:'提示'}, function(index){
+    layer.confirm('确认退出？', {icon: 3, title:'提示'}, function(index){
          //点击确认执行的回调函数
         
         // 清除token

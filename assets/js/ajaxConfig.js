@@ -4,7 +4,7 @@ $.ajaxPrefilter(function(options){
     // console.log("我是根路径的优化");
     // console.log(options);
     options.url = "http://ajax.frontend.itheima.net" + options.url;
-    console.log(options);
+    // console.log(options);
 
     //-----》03
     options.headers = {
